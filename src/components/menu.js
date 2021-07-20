@@ -1,26 +1,27 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 class Menu extends React.Component {
   render() {
     return (
       <ul>
         <li>
-          <a href="/">PEOPLE</a>
+          <NavLink to="/people">PEOPLE</NavLink>
         </li>
         <li>
-          <a href="/">PLANETS</a>
+          <NavLink to="/planets">PLANETS</NavLink>
         </li>
         <li>
-          <a href="/">STARSHIPS</a>
+          <NavLink to="/starships">STARSHIPS</NavLink>
         </li>
         <li>
-          <a href="/">VEHICLES</a>
+          <NavLink to="/vehicles">VEHICLES</NavLink>
         </li>
         <li>
-          <a href="/">FILMS</a>
+          <NavLink to="/films">FILMS</NavLink>
         </li>
         <li>
-          <a href="/">SPECIES</a>
+          <NavLink to="/species">SPECIES</NavLink>
         </li>
       </ul>
     )

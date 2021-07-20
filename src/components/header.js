@@ -1,14 +1,15 @@
 import React from 'react';
 import Menu from './menu.js'
 import logo from '../assets/star-wars-logo.png'
+import { NavLink } from "react-router-dom";
 
 class Header extends React.Component {
   render() {
     return (
       <header>
-        <a className="logo-link" href="/">
+        <NavLink to="/" className="logo-link">
           <img src={logo} alt="logo" />
-        </a>
+        </NavLink>
         <div className="nav-menu">
           <Menu />
         </div>
