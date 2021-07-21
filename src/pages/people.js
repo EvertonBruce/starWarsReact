@@ -1,12 +1,12 @@
 import React from 'react';
 
-function paginated_fetch(url, page = 1, previousResponse = []) {
+function paginated_fetch(url = 'https://swapi.dev/api/people/', page = 1, previousResponse = []) {
   return fetch(`${url}?page=${page}`) // Append the page number to the base URL
     .then(response => response.json())
     .then(newResponse => {
       const response = [...previousResponse, ...newResponse.results]; // Combine the two arrays
 
-      if (newResponse.next !== null) {
+      if (newResponse.next !== null) { // test if there is another page to read
         page++;
 
         return paginated_fetch(url, page, response);
@@ -25,13 +25,13 @@ function paginated_fetch(url, page = 1, previousResponse = []) {
     });
 }
 
-paginated_fetch('https://swapi.dev/api/people/')
-
 class People extends React.Component {
+  componentDidMount() {
+    paginated_fetch()
+  }
   render() {
     return (
       <div className="people-container">
-        <h1>People</h1>
       </div>
     )
   }

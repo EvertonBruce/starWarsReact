@@ -28,7 +28,8 @@ header img {
   left: 0;
 }
 
-.nav-menu ul {
+.nav-menu ul,
+.nav-menu ul li {
   list-style: none;
   padding-right: 20px;
 }
@@ -37,7 +38,7 @@ header img {
   text-decoration: none;
   color: #DBA90D;
   padding: 10px;
-  font-size: 25px;
+  font-size: 1.5vw;
   transition: 0.2s;
 }
 
@@ -72,7 +73,14 @@ h1 {
   border: solid;
   border-radius: 10px;
   margin: 10px;
-  min-width: 27%;
+  width: 27%;
   min-height: 150px;
   background-color: #00000080;
+}
+
+@media (max-width: 600px) {
+  .people-list li {
+    flex-direction: column;
+    width: 100%;
+  }
 }
