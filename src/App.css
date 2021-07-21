@@ -57,3 +57,22 @@ header img {
 h1 {
   color: #fff
 }
+
+.people-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.people-list li{
+  color: #DBA90D;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: solid;
+  border-radius: 10px;
+  margin: 10px;
+  min-width: 27%;
+  min-height: 150px;
+  background-color: #00000080;
+}
