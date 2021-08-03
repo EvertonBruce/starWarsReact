@@ -1,4 +1,4 @@
-# Teste Everton
+# Star Wars React
 
 It was created using React.
 
