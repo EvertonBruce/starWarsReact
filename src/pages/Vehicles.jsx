@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LoadAnimation from '../components/LoadAnimation';
+
 function paginated_fetch(url = 'https://swapi.dev/api/people/', page = 1, previousResponse = []) {
   return fetch(`${url}?page=${page}`) // Append the page number to the base URL
     .then(response => response.json())
@@ -13,28 +15,33 @@ function paginated_fetch(url = 'https://swapi.dev/api/people/', page = 1, previo
       }
 
       const itens = response.reduce(
-        (html, person) => 
+        (html, vehicle) => 
         
         html 
         + `<li>`
-        + `<span>Name: ${person.name}</span>`
-        + `<span>Birth Year: ${person.birth_year}</span>`
+        + `<span>Name: ${vehicle.name}</span>`
+        + `<span>Model: ${vehicle.model}</span>`
+        + `<span>Cost in credits: ${vehicle.cost_in_credits}</span>`
         + `</li>`, ''
       )
-      document.querySelector('.people-container').insertAdjacentHTML('beforeend', `<ul class="people-list">${itens}</ul>`)
+      if(document.querySelector('.vehicles-container')) {
+        document.querySelector('.load-animation').style.display = 'none'
+        document.querySelector('.vehicles-container').insertAdjacentHTML('beforeend', `<ul class="people-list">${itens}</ul>`)
+      }
     });
 }
 
-class People extends React.Component {
+class Vehicles extends React.Component {
   componentDidMount() {
-    paginated_fetch()
+    paginated_fetch('https://swapi.dev/api/vehicles')
   }
   render() {
     return (
-      <div className="people-container">
+      <div className="vehicles-container">
+        <LoadAnimation />
       </div>
     )
   }
 }
 
-export default People;
+export default Vehicles;

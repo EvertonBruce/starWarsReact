@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LoadAnimation from '../components/LoadAnimation';
+
 function paginated_fetch(url = 'https://swapi.dev/api/people/', page = 1, previousResponse = []) {
   return fetch(`${url}?page=${page}`) // Append the page number to the base URL
     .then(response => response.json())
@@ -13,29 +15,33 @@ function paginated_fetch(url = 'https://swapi.dev/api/people/', page = 1, previo
       }
 
       const itens = response.reduce(
-        (html, planet) => 
+        (html, film) => 
         
         html 
         + `<li>`
-        + `<span>Name: ${planet.name}</span>`
-        + `<span>Climate: ${planet.climate}</span>`
-        + `<span>Population: ${planet.population}</span>`
+        + `<span>Title: ${film.title}</span>`
+        + `<span>Episode: ${film.episode_id}</span>`
+        + `<span>Director: ${film.director}</span>`
         + `</li>`, ''
       )
-      document.querySelector('.planets-container').insertAdjacentHTML('beforeend', `<ul class="people-list">${itens}</ul>`)
+      if(document.querySelector('.films-container')) {
+        document.querySelector('.load-animation').style.display = 'none'
+        document.querySelector('.films-container').insertAdjacentHTML('beforeend', `<ul class="people-list">${itens}</ul>`)
+      }
     });
 }
 
-class Planets extends React.Component {
+class Films extends React.Component {
   componentDidMount() {
-    paginated_fetch('https://swapi.dev/api/planets/')
+    paginated_fetch('https://swapi.dev/api/films')
   }
   render() {
     return (
-      <div className="planets-container">
+      <div className="films-container">
+        <LoadAnimation />
       </div>
     )
   }
 }
 
-export default Planets;
+export default Films;

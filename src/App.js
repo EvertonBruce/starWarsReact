@@ -1,16 +1,16 @@
-import Header from './components/header.js'
+import Header from './components/Header'
 import './App.css';
 import {
   Route,
   HashRouter
 } from "react-router-dom";
-import Home from "./pages/home";
-import People from "./pages/people";
-import Planets from "./pages/planets";
-import Starships from "./pages/starships";
-import Vehicles from "./pages/vehicles";
-import Films from "./pages/films";
-import Species from "./pages/species";
+import Home from "./pages/Home.jsx";
+import People from "./pages/People.jsx";
+import Planets from "./pages/Planets.jsx";
+import Starships from "./pages/Starships.jsx";
+import Vehicles from "./pages/Vehicles.jsx";
+import Films from "./pages/Films";
+import Species from "./pages/Species.jsx";
 
 function App() {
   return (
